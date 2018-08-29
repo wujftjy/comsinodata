@@ -17,12 +17,12 @@ import java.util.Map;
  * @desc :
  */
 @Controller
-@RequestMapping(value = "/demo")
+@RequestMapping(value = "")
 public class DemoController
 {
     @Autowired
     JdbcTemplate jdbcTemplate;
-    @RequestMapping(value = "/hello")
+    @RequestMapping(value = "/index")
     public String hello(HttpServletRequest request , HttpServletResponse response){
 
 
