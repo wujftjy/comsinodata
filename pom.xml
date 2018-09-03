@@ -8,6 +8,7 @@
     <artifactId>com.sino.data</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -91,7 +92,7 @@
             <version>10.2.0</version>
         </dependency>
 
-        <dependency>
+    <!--    <dependency>
             <groupId>com.cloudhopper.proxool</groupId>
             <artifactId>proxool-cglib</artifactId>
             <version>0.9.1</version>
@@ -103,7 +104,7 @@
             <version>0.9.1</version>
             <classifier>sysware</classifier>
         </dependency>
-
+-->
         <dependency>
             <groupId>net.sf.ehcache</groupId>
             <artifactId>ehcache</artifactId>
@@ -116,16 +117,40 @@
             <version>1.1.9</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>3.6.10.Final</version>
+        </dependency>
+
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <!--<skip>true</skip>-->
+                    <!--<failOnError>false</failOnError>-->
+                    <!--当配置true时,只清理filesets里的文件,构建目录中得文件不被清理.默认是flase.-->
+                    <excludeDefaultDirectories>false</excludeDefaultDirectories>
+                    <filesets>
+                        <fileset>
+                            <!--要清理的目录位置-->
+                            <directory>${basedir}/out</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.4</version>
             </plugin>
+
             <!-- tomcat 启动 -->
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
